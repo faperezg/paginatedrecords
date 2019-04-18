@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:paginated-records
+    username: 'sa'
+    password: ''
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      generate-ddl: true
+    show-sql: true
+  thymeleaf:
+    cache: false
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html

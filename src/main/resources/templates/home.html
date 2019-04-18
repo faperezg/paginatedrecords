@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Felipe Pérez - Prueba desarrolladores JAVA Azurian</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="resources/styles/bootstrap.min.css" />
+</head>
+<body>
+<main class="container">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center mb-3">
+        <a class="navbar-brand" href="#">
+            <img src="resources/media/avatar.jpg" alt="Felipe Pérez" class="rounded-circle" style="width: 40px;" />
+        </a>
+        <span class="navbar-text">Prueba desarrolladores Java Azurian</span>
+    </nav>
+    <div id="accordion">
+        <section class="card">
+            <div class="card-header">
+                <a class="card-link" data-toggle="collapse" href="#collapseOne">Requerimientos</a>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                <article class="card-body">
+                    <p class="mb-3">Implementar los siguientes componentes utilizando Maven para la gestión de dependencias:</p>
+                    <h6>Backend</h6>
+                    <p>Implementar la consulta de una lista de registros desde una base de datos y disponibilizar dicha operación como servicio REST y/o SOAP. Herramientas a utilizar:</p>
+                    <ul class="list-group list-group-flush mb-5">
+                        <li class="list-group-item">Java/Spring</li>
+                        <li class="list-group-item">JPA</li>
+                        <li class="list-group-item">
+                            Base de datos, para lo cual debe utilizar alguna de las siguientes alternativas:
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MySQL (debe adjuntar scripts para creación de tablas e inserción de data inicial)</li>
+                                <li class="list-group-item">Base de datos en memoria. (Ej: HSQL, H2, Derby)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h6>Frontend</h6>
+                    <p class="mb-5">Implemente una aplicación web con la(s) tecnología(s) que estime conveniente (Java/JSP, Java/JSF, Angular, etc) y que haga uso de los servicios implementados en backend (SOAP o REST) para desplegar el listado de registros en una tabla paginada.
+                    <h6>Alcances</h6>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Se le solicita disponibilizar las fuentes en algún repositorio GIT público (por ej: github, gitlab, etc) y que envíe por e-mail la(s) URL(s) necesarias para realizar la revisión de las mismas. NO envíe archivos comprimidos (zip, rar, etc) mediante mail, google drive ni similares.</li>
+                        <li class="list-group-item">Si su desarrollo requiere instrucciones especiales para la compilación, empaquetado y/o deploy, debe especificarlas por e-mail o a través de archivos README en repositorio.</li>
+                        <li class="list-group-item">Debe entregar las fuentes de su desarrollo, que serán compiladas y ejecutadasutilizando maven en un ambiente de azurian.</li>
+                        <li class="list-group-item">No adjunte versiones empaquetadas de su desarrollo, ni proyectos dependientes de un IDE (eclipse, netbeans, etc). Desarrollos DEBEN compilar utilizando maven 1</li>
+                        <li class="list-group-item">A menos que usted especifique otra cosa, desarrollos serán deployados contra una instalación limpia de tomcat 8.5</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+        <section class="card">
+            <div class="card-header">
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">Descripción de la solución</a>
+            </div>
+            <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                    <p>Se implementaron dos componentes, los cuales se describen a continuación:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">Componente MVC que muestra esta página. Se accede en la raíz del contexto donde se haya instalado la aplicación</li>
+                        <li class="list-group-item">Componente REST que ofrece las operaciones de creación/lectura/actualización/eliminación sobre un repositorio en memoria con data falsa de Personas obtenida de internet. Se accede en la ruta /api/people a partir del contexto donde se haya instalado la aplicación</li>
+                    </ul>
+                    <p>Para ello se tomaron las siguientes decisiones</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">Desarrollar un servicio web REST, dejando de lado el componente SOAP. REST es una tecnología más simple, lo que permite desarrollar más elementos para esta prueba, y así mostrar más capacidades</li>
+                        <li class="list-group-item">El servicio web soportará la propuesta HATEOAS para definir la estructura de la información recibida del servidor</li>
+                        <li class="list-group-item">Utilizar Spring Boot como punto de partida en lugar de Spring puro. Spring Boot es un framework ligero que funciona sobre Spring (por lo que no se rompe el requerimiento inicial de usar Spring) y ofrece una serie de elementos al programador que reducen la cantidad de código necesario, así como el tiempo requerido para completar la solución, algo necesario ante la premisa de entregar en menos de 3 días.</li>
+                        <li class="list-group-item">Utilizar Hibernate como implementación JPA. Hibernate ofrece un ORM robusto, tiene una amplia comunidad de desarrolladores, sigue en constante evolución, es fácil de configurar y de utilizar</li>
+                        <li class="list-group-item">Utilizar H2 como base de datos. No requiere configuración especial, la prueba es bastante simple, y tenía un mínimo de experiencia usándola. MySQL requiere de un servidor aparte, archivos adicionales, y no ofrece a objeto de la prueba ninguna ventaja.</li>
+                        <li class="list-group-item">Utilizar BootstrapCSS 4 como herramienta para la generación del frontend. Es muy simple de usar, tengo suficiente experiencia, ofrece herramientas muy versátiles para con poco código armar un frontend aceptable</li>
+                        <li class="list-group-item">Utilizar KnockoutJS como framework MVVM. Mis fortalezas en el desarrollo de software están del lado del Backend, y no tengo experiencia alguna con frameworks o librerías más modernas (AngularJS, ReactJS, VueJS).</li>
+                    </ul>
+                    <p>El paquete tld.faperezg.paginatedrecords consta de lo siguiente:</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Entidad Person, con los atributos id, Nombre y apellido de la persona, edad, número de pasaporte y dirección, con su correspondiente repositorio</li>
+                        <li class="list-group-item">Servicio PersonService para gestionar las operaciones de negocio sobre la entidad</li>
+                        <li class="list-group-item">Controlador MVC HomeResource para desplegar esta página</li>
+                        <li class="list-group-item">Controlador REST PersonResource que ofrece los puntos de acceso del servicio web</li>
+                        <li class="list-group-item">Gestor de excepciones para convertir a JSON los mensajes de error</li>
+                        <li class="list-group-item">Clases utilitarias para convertir fácilmente de los objetos entidad a objetos compatibles con HATEOAS</li>
+                        <li class="list-group-item">Pruebas unitarias y funcionales</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="card">
+            <div class="card-header">
+                <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">Resultado</a>
+            </div>
+            <div id="collapseThree" class="collapse" data-parent="#accordion">
+                <div class="card-body">
+                    <p>Se han encontrado <span data-bind="text: totalRecords"></span> registros. Mostrando <span data-bind="text: endRecordNumber"></span></p>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-striped">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>Número de pasaporte</th>
+                            <th>Nombre y apellido</th>
+                            <th>Edad</th>
+                            <th>Género</th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="foreach: people">
+                        <tr>
+                            <td data-bind="text: passportId"></td>
+                            <td data-bind="text: fullName"></td>
+                            <td data-bind="text: age"></td>
+                            <td data-bind="text: gender"></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                <button type="button" class="btn btn-link" data-bind="if: hasNext, click: $root.fetchNext">Obtener más</button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<script src="resources/scripts/jquery.min.js"></script>
+<script src="resources/scripts/popper.min.js"></script>
+<script src="resources/scripts/bootstrap.min.js"></script>
+<script src="resources/scripts/knockout-3.5.0.js"></script>
+<script src="resources/scripts/people.js"></script>
+</body>
+</html>
